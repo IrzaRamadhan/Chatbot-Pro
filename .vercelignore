@@ -1,0 +1,9 @@
+vendor
+node_modules
+storage
+.env
+.env.local
+.env.production
+bootstrap/cache/*.php
+public/build
+public/hot
