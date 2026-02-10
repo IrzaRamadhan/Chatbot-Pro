@@ -11,8 +11,10 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // Vercel-specific storage configuration
-// Because Vercel file system is read-only, we must use /tmp for storage
 if (isset($_ENV['VERCEL']) || getenv('VERCEL')) {
+    // Force logs to stderr so errors appear in Vercel console
+    putenv('LOG_CHANNEL=stderr');
+    
     $storage = '/tmp/storage';
     
     if (!is_dir($storage)) {
